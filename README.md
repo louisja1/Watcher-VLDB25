@@ -43,3 +43,5 @@ python3 main1d.py ../input_configs/dsb_sf2_config_Q013a-6B.json # for running Wa
 ```
 
 Please also see the details in the json files in `input_configs/`
+
+`data/` is large and zipped.
