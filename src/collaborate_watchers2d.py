@@ -1776,7 +1776,7 @@ class TwoTierWatcher1D:
         execution_time, 
         planning_time,
         tableset_to_truecard,
-    ): #TODO
+    ): 
         if rs in self.watch_set:
             hit = True
         else:
@@ -2985,12 +2985,11 @@ if __name__ == "__main__":
             jk_bounds = deployment_config["watcher"]["jk_bounds"]
         elif deployment == "twotier":
             assert "twotier" in deployment_config
-            # TODO
             triggers = deployment_config["twotier"]["triggers"] # tab -> [..., ...]
             if "error_metric" in deployment_config["twotier"]:
                 error_metric = deployment_config["twotier"]["error_metric"]
             if "init_theta" in deployment_config["twotier"]:
-                init_theta = deployment_config["twotier"]["init_theta"] # TODO: it is init_theta instead of init_thetas
+                init_theta = deployment_config["twotier"]["init_theta"] 
             if "size_budget" in deployment_config["twotier"]:
                 size_budget = deployment_config["twotier"]["size_budget"]
             execution_time_lb = deployment_config["twotier"]["execution_time_lb"]

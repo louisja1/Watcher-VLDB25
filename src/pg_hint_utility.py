@@ -483,7 +483,7 @@ def get_real_latency(
     hint=None, 
     limit_time=50000, 
     limit_worker=True, 
-    n_repetitions=2, 
+    n_repetitions=3, 
     extract_plan_info=False, 
     focus_on=None, 
     enable_single_sel_injection=True, 
