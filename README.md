@@ -13,6 +13,21 @@ plyvel==1.5.1
 ## Path setup
 There are some paths to manually setup for connecting PostgreSQL and LevelDB in `pg_hint_utility.py`, `connection.py`, `db_wrapper.py`
 
+## Codes Organization
+for single-selection subqueries
+`base_main1d.py` is Baseline.
+`baseline1d.py` is Periodic.
+`execute_trainingset1d.py` is for executing the queries in the initial query set and collect associated information, including true cardinalities and some timings.
+`main1d.py` is the driver of `watcher1d.py` for running Watcher1D.
+`precompute_truecards1d.py` is to pre-compute the true cardinalities for each single-selection subqueries of the queries in the dynamic workload (and the overhead is recorded). So whenever a report query is needed for computing the true cardinality (since it is not available from the execution feedback), we use the true cardinality and count the overhead.
+`truecard_main1d.py` is True.
+`twotier_main1d.py` is the driver of `twotier_watcher1d.py` for running SWatcher+.
+
+for two-table join subqueries,
+`base_main2d.py`, `baseline2d.py`, `execute_trainingset2d.py`, `precompute_truecards2d.py`, `truecard_main2d.py` are the corresponding 2D versions.
+`main2d.py` is the driver of `watcher2d.py` for running Watcher2D.
+`collaborate_watchers2d.py` is where we run the exeperiments for 'TJQ'-templates, so we will collaborate multiple Periodic, multiple Baseline, multiple SWatcher+, or multiple Watchers there. This code also contains the similar implementations for Baseline, True, Periodic, Watcher1D, Watcher2D, SWatcher+, except a query won't be execute inside them and there is `pre_query()` and `post_query()` in each of them.
+
 ## Example Usages For Running Q013a of six-batch setting
 ```
 sh run.sh
